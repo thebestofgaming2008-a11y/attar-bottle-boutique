@@ -1,6 +1,13 @@
 import bottle from "@/assets/badr-bottle.png.asset.json";
+import heroVideo from "@/assets/badr-hero.mp4.asset.json";
+import imgZafar from "@/assets/sku-oud-zafar.jpg";
+import imgGulaab from "@/assets/sku-oud-gulaab.jpg";
+import imgFitoor from "@/assets/sku-fitoor.jpg";
+import imgDariya from "@/assets/sku-dariya.jpg";
+import imgUlfat from "@/assets/sku-ulfat.jpg";
 
 export const BOTTLE_IMAGE = bottle.url;
+export const HERO_VIDEO = heroVideo.url;
 
 export type Product = {
   id: string;
@@ -8,6 +15,7 @@ export type Product = {
   category: string;
   tag: string;
   hook: string;
+  image: string;
   story: string;
   notes: string[];
   price: number;
@@ -22,6 +30,7 @@ export const PRODUCTS: Product[] = [
     category: "Unisex Oud Parfum",
     tag: "Deep · Warm · Commanding",
     hook: "Oud, saffron and a fight worth winning.",
+    image: imgZafar,
     story:
       "Bold oud and saffron sit at the centre, rose keeps it warm, sandalwood stays on the skin long after you've left the room.",
     notes: ["Oud", "Saffron", "Rose", "Amber", "Sandalwood"],
@@ -39,6 +48,7 @@ export const PRODUCTS: Product[] = [
     category: "Unisex Floral Oud Parfum",
     tag: "Rose · Resin · Quiet confidence",
     hook: "Rose, oud and a slow exhale.",
+    image: imgGulaab,
     story:
       "Turkish rose with a soft resinous oud, backed by sandalwood and musk that hang around till the night's over.",
     notes: ["Rose", "Oud", "Sandalwood", "Musk"],
@@ -56,6 +66,7 @@ export const PRODUCTS: Product[] = [
     category: "Unisex Fruity Woody Parfum",
     tag: "Juicy · Woody · Everyday",
     hook: "Pineapple, vanilla and a little bit of obsession.",
+    image: imgFitoor,
     story:
       "Juicy pineapple and apple lead, soft woods sit underneath, and a warm vanilla-musk trail closes it out.",
     notes: ["Pineapple", "Apple", "Vanilla", "Musk"],
@@ -73,6 +84,7 @@ export const PRODUCTS: Product[] = [
     category: "Unisex Fresh Aquatic Parfum",
     tag: "Clean · Citrus · Open water",
     hook: "Bergamot, vetiver and open water.",
+    image: imgDariya,
     story:
       "Bergamot and mandarin open it up clean, vetiver carries it home — for the days you want to feel like you just stepped outside.",
     notes: ["Bergamot", "Mandarin", "Vetiver"],
@@ -90,6 +102,7 @@ export const PRODUCTS: Product[] = [
     category: "Unisex Gourmand Vanilla Parfum",
     tag: "Sweet · Amber · Close",
     hook: "Vanilla, amber and being close to someone.",
+    image: imgUlfat,
     story:
       "Lavender opens it, vanilla carries the heart, amber wraps it up warm — sweet without asking for permission.",
     notes: ["Lavender", "Vanilla", "Amber"],
