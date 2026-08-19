@@ -29,13 +29,13 @@ export const Route = createFileRoute("/")({
 function Index() {
   const cart = useCart();
   const [cartOpen, setCartOpen] = useState(false);
-  const [selected, setSelected] = useState(PRODUCTS[0].id);
+  const [selected, setSelected] = useState(PRODUCTS[0]!.id);
   const [qty, setQty] = useState(1);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
   const [showBar, setShowBar] = useState(false);
   const heroRef = useRef<HTMLElement | null>(null);
 
-  const product = PRODUCTS.find((p) => p.id === selected)!;
+  const product = PRODUCTS.find((p) => p.id === selected) ?? PRODUCTS[0]!;
 
   useEffect(() => {
     const onScroll = () => setShowBar(window.scrollY > 420);
