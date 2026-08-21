@@ -9,17 +9,25 @@ import imgUlfat from "@/assets/sku-ulfat.jpg";
 export const BOTTLE_IMAGE = bottle.url;
 export const HERO_VIDEO = heroVideo.url;
 
+export type Occasion = "evening" | "everyday" | "morning" | "close";
+
 export type Product = {
   id: string;
   name: string;
   category: string;
   tag: string;
+  /** Mood tag straight from the product copy doc. */
+  mood: string;
+  /** What the name means, where it has a meaning. */
+  meaning?: string;
   hook: string;
   image: string;
   story: string;
   notes: string[];
   price: number;
   mrp: number;
+  occasion: Occasion;
+  intensity: "bold" | "soft";
   faqs: { q: string; a: string }[];
 };
 
