@@ -1,17 +1,10 @@
 import { X, Minus, Plus, ShoppingBag } from "lucide-react";
-import { BOTTLE_IMAGE, FREE_SHIPPING_THRESHOLD, PRODUCTS, inr } from "@/lib/products";
-import type { CartLine } from "./useCart";
+import { FREE_SHIPPING_THRESHOLD, PRODUCTS, inr } from "@/lib/products";
+import { useCart } from "./CartContext";
 
-type Props = {
-  open: boolean;
-  onClose: () => void;
-  lines: CartLine[];
-  subtotal: number;
-  setQty: (id: string, qty: number) => void;
-  add: (id: string) => void;
-};
-
-export function CartDrawer({ open, onClose, lines, subtotal, setQty, add }: Props) {
+export function CartDrawer() {
+  const { open, setOpen, lines, subtotal, setQty, add } = useCart();
+  const onClose = () => setOpen(false);
   const remaining = Math.max(0, FREE_SHIPPING_THRESHOLD - subtotal);
   const pct = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
   const inCart = new Set(lines.map((l) => l.id));
@@ -60,7 +53,7 @@ export function CartDrawer({ open, onClose, lines, subtotal, setQty, add }: Prop
             <ul className="divide-y divide-border">
               {lines.map((line) => (
                 <li key={line.id} className="grid grid-cols-[64px_minmax(0,1fr)_auto] items-center gap-4 py-5">
-                  <img src={BOTTLE_IMAGE} alt={line.name} className="h-16 w-16 shrink-0 object-contain" />
+                  <img src={line.image} alt={line.name} className="h-16 w-16 shrink-0 object-contain" />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold uppercase tracking-wide">{line.name}</p>
                     <p className="mt-0.5 text-xs text-muted-foreground">6 ml roll-on</p>
@@ -97,7 +90,7 @@ export function CartDrawer({ open, onClose, lines, subtotal, setQty, add }: Prop
               <div className="no-scrollbar -mx-5 mt-4 flex gap-3 overflow-x-auto px-5">
                 {suggestions.map((p) => (
                   <div key={p.id} className="w-36 shrink-0 border border-border p-3">
-                    <img src={BOTTLE_IMAGE} alt={p.name} className="mx-auto h-20 object-contain" />
+                    <img src={p.image} alt={p.name} className="mx-auto h-20 object-contain" />
                     <p className="mt-2 truncate text-xs font-semibold uppercase">{p.name}</p>
                     <p className="text-xs text-muted-foreground">{inr(p.price)}</p>
                     <button
