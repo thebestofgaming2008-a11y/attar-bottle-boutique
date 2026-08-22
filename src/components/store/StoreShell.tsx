@@ -37,7 +37,7 @@ function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-40 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 bg-foreground px-5 text-background transition-all duration-300 ${
+      className={`sticky top-0 z-40 grid grid-cols-[1fr_auto_1fr] items-center gap-3 bg-foreground px-5 text-background transition-all duration-300 ${
         shrunk ? "py-2" : "py-3.5"
       }`}
     >
@@ -48,10 +48,18 @@ function SiteHeader() {
           className={`w-auto object-contain transition-all duration-300 ${shrunk ? "h-4" : "h-5"}`}
         />
       </Link>
+
+      <a
+        href="/#shop"
+        className="justify-self-center border border-background/60 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
+      >
+        Buy now
+      </a>
+
       <button
         onClick={() => cart.setOpen(true)}
         aria-label="Open cart"
-        className="relative shrink-0 p-1"
+        className="relative shrink-0 justify-self-end p-1"
       >
         <ShoppingBag className="h-5 w-5" />
         {cart.count > 0 && (
