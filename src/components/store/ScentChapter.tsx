@@ -34,14 +34,17 @@ export function ScentChapter({ product, index }: { product: Product; index: numb
     >
       <div className="mx-auto flex max-w-5xl flex-col items-center gap-10 sm:flex-row sm:items-center sm:gap-16">
         <Reveal className={`w-full sm:w-1/2 ${index % 2 ? "sm:order-2" : ""}`}>
-          <img
-            src={product.image}
-            alt={`${product.name} attar, 6 ml roll-on`}
-            style={{ transform: `translateY(${drift}px)` }}
-            className="mx-auto w-full max-w-[240px] will-change-transform"
-            loading="lazy"
-          />
+          <div className="group mx-auto w-full max-w-[300px] overflow-hidden bg-background px-8 py-10">
+            <img
+              src={product.image}
+              alt={`${product.name} attar, 6 ml roll-on`}
+              style={{ transform: `translateY(${drift}px)` }}
+              className="mx-auto w-full max-w-[200px] will-change-transform transition-transform duration-700 group-hover:scale-[1.05]"
+              loading="lazy"
+            />
+          </div>
         </Reveal>
+
 
         <Reveal delay={120} className="w-full sm:w-1/2">
           <div className="text-center sm:text-left">
