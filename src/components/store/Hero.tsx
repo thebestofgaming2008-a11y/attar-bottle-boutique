@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import bottleCut from "@/assets/badr-bottle-cut.png.asset.json";
 import logo from "@/assets/badr-logo.png.asset.json";
+import { Wordmark } from "./Wordmark";
 
 export const HERO_BOTTLE = bottleCut.url;
 export const BADR_LOGO = logo.url;
