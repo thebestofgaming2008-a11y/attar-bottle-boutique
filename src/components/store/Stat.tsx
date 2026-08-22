@@ -21,8 +21,8 @@ export function Stat({
       return;
     }
     const io = new IntersectionObserver(
-      ([e]) => {
-        if (!e.isIntersecting) return;
+      (entries) => {
+        if (!entries[0]?.isIntersecting) return;
         io.disconnect();
         const start = performance.now();
         const tick = (t: number) => {
