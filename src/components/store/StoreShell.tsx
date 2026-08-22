@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import { BADR_LOGO } from "./Hero";
+import { Wordmark } from "./Wordmark";
 import { useCart } from "./CartContext";
 import { CartDrawer } from "./CartDrawer";
 
@@ -42,11 +42,7 @@ function SiteHeader() {
       }`}
     >
       <Link to="/" className="justify-self-start">
-        <img
-          src={BADR_LOGO}
-          alt="BADR"
-          className={`w-auto object-contain transition-all duration-300 ${shrunk ? "h-4" : "h-5"}`}
-        />
+        <Wordmark size={shrunk ? "sm" : "md"} />
       </Link>
 
       <a
@@ -75,7 +71,7 @@ function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-foreground px-6 py-20 text-center text-background">
-      <img src={BADR_LOGO} alt="BADR" className="mx-auto h-6 w-auto object-contain" />
+      <Wordmark size="lg" estd className="mx-auto block" />
       <p className="mt-5 font-display text-xl leading-none">Rare air.</p>
       <p className="mt-4 text-xs uppercase tracking-[0.2em] text-background/60">
         Crafted for the relentless
