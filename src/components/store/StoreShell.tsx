@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ShoppingBag } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import { BADR_LOGO } from "./Hero";
+import { Wordmark } from "./Wordmark";
 import { useCart } from "./CartContext";
 import { CartDrawer } from "./CartDrawer";
 
@@ -37,21 +37,25 @@ function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-40 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4 bg-foreground px-5 text-background transition-all duration-300 ${
+      className={`sticky top-0 z-40 grid grid-cols-[1fr_auto_1fr] items-center gap-3 bg-foreground px-5 text-background transition-all duration-300 ${
         shrunk ? "py-2" : "py-3.5"
       }`}
     >
       <Link to="/" className="justify-self-start">
-        <img
-          src={BADR_LOGO}
-          alt="BADR"
-          className={`w-auto object-contain transition-all duration-300 ${shrunk ? "h-4" : "h-5"}`}
-        />
+        <Wordmark size={shrunk ? "sm" : "md"} />
       </Link>
+
+      <a
+        href="/#shop"
+        className="justify-self-center border border-background/60 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
+      >
+        Buy now
+      </a>
+
       <button
         onClick={() => cart.setOpen(true)}
         aria-label="Open cart"
-        className="relative shrink-0 p-1"
+        className="relative shrink-0 justify-self-end p-1"
       >
         <ShoppingBag className="h-5 w-5" />
         {cart.count > 0 && (
@@ -67,7 +71,7 @@ function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="border-t border-border bg-foreground px-6 py-20 text-center text-background">
-      <img src={BADR_LOGO} alt="BADR" className="mx-auto h-6 w-auto object-contain" />
+      <Wordmark size="lg" estd className="mx-auto block" />
       <p className="mt-5 font-display text-xl leading-none">Rare air.</p>
       <p className="mt-4 text-xs uppercase tracking-[0.2em] text-background/60">
         Crafted for the relentless
