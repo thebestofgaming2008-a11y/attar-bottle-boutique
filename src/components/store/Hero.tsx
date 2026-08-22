@@ -22,12 +22,8 @@ export function Hero({
 }) {
   return (
     <section className="relative overflow-hidden bg-foreground px-6 pb-0 pt-8 text-background">
-      <img
-        src={BADR_LOGO}
-        alt="BADR"
-        className="mx-auto h-7 w-auto object-contain"
-        loading="eager"
-      />
+      <Wordmark size="lg" estd className="mx-auto block" />
+
 
       <h1 className="mx-auto mt-10 max-w-[9ch] text-left font-display text-[2.6rem] leading-[0.98] sm:max-w-none sm:text-center sm:text-6xl">
         {headline}
