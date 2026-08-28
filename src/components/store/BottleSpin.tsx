@@ -40,21 +40,20 @@ export function BottleSpin({ className = "" }: { className?: string }) {
     return () => clearInterval(id);
   }, []);
 
+  const front = SPIN_BOTTLES[faces[0]] ?? SPIN_BOTTLES[0]!;
+  const back = SPIN_BOTTLES[faces[1]] ?? SPIN_BOTTLES[1]!;
+
   return (
     <div className={`bottle-spin-stage ${className}`}>
       <div className="bottle-spin">
         <img
-          src={SPIN_BOTTLES[faces[0]].src}
-          alt={`BADR ${SPIN_BOTTLES[faces[0]].name} 6 ml roll-on attar bottle`}
+          src={front.src}
+          alt={`BADR ${front.name} 6 ml roll-on attar bottle`}
           className="bottle-spin-face"
         />
-        <img
-          src={SPIN_BOTTLES[faces[1]].src}
-          alt=""
-          aria-hidden
-          className="bottle-spin-face bottle-spin-back"
-        />
+        <img src={back.src} alt="" aria-hidden className="bottle-spin-face bottle-spin-back" />
       </div>
     </div>
   );
+
 }
