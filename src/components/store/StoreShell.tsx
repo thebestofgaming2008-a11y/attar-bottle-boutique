@@ -37,35 +37,38 @@ function SiteHeader() {
 
   return (
     <header
-      className={`sticky top-0 z-40 grid grid-cols-[1fr_auto_1fr] items-center gap-3 bg-foreground px-5 text-background transition-all duration-300 ${
-        shrunk ? "py-2" : "py-3.5"
+      className={`sticky top-0 z-40 flex items-center justify-between gap-4 border-b border-background/10 bg-foreground/95 px-5 text-background backdrop-blur transition-all duration-300 ${
+        shrunk ? "py-2.5" : "py-4"
       }`}
     >
-      <Link to="/" className="justify-self-start">
+      <Link to="/" aria-label="BADR home" className="shrink-0">
         <Wordmark size={shrunk ? "sm" : "md"} />
       </Link>
 
-      <a
-        href="/#shop"
-        className="justify-self-center border border-background/60 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
-      >
-        Buy now
-      </a>
+      <div className="flex items-center gap-3">
+        <a
+          href="/#shop"
+          className="border border-background/60 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
+        >
+          Buy now
+        </a>
 
-      <button
-        onClick={() => cart.setOpen(true)}
-        aria-label="Open cart"
-        className="relative shrink-0 justify-self-end p-1"
-      >
-        <ShoppingBag className="h-5 w-5" />
-        {cart.count > 0 && (
-          <span className="absolute -right-1 -top-1 grid h-4 min-w-4 place-items-center rounded-full bg-background px-1 text-[10px] font-semibold text-foreground">
-            {cart.count}
-          </span>
-        )}
-      </button>
+        <button
+          onClick={() => cart.setOpen(true)}
+          aria-label="Open cart"
+          className="relative shrink-0 p-1"
+        >
+          <ShoppingBag className="h-5 w-5" />
+          {cart.count > 0 && (
+            <span className="absolute -right-1 -top-1 grid h-4 min-w-4 place-items-center rounded-full bg-background px-1 text-[10px] font-semibold text-foreground">
+              {cart.count}
+            </span>
+          )}
+        </button>
+      </div>
     </header>
   );
+
 }
 
 export function SiteFooter() {
