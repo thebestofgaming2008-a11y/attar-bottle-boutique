@@ -22,7 +22,7 @@ const HALF_TURN = 1600;
  * so the bottle appears to keep turning and keeps revealing new designs.
  */
 export function BottleSpin({ className = "" }: { className?: string }) {
-  const [faces, setFaces] = useState([0, 1]);
+  const [faces, setFaces] = useState<[number, number]>([0, 1]);
   const step = useRef(0);
 
   useEffect(() => {
@@ -30,12 +30,13 @@ export function BottleSpin({ className = "" }: { className?: string }) {
     const id = setInterval(() => {
       step.current += 1;
       const n = step.current;
-      setFaces((f) => {
-        const next = (Math.max(f[0], f[1]) + 1) % SPIN_BOTTLES.length;
+      setFaces(([a, b]): [number, number] => {
+        const next = (Math.max(a, b) + 1) % SPIN_BOTTLES.length;
         // n even -> face A is visible, refresh the hidden face B, and vice versa.
-        return n % 2 === 0 ? [f[0], next] : [next, f[1]];
+        return n % 2 === 0 ? [a, next] : [next, b];
       });
     }, HALF_TURN);
+
     return () => clearInterval(id);
   }, []);
 
