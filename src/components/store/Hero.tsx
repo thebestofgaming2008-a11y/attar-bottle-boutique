@@ -25,7 +25,7 @@ export function Hero({
   const headlineSize = headline ? "text-[18vw] sm:text-[7rem]" : "text-[22vw] sm:text-[9rem]";
 
   return (
-    <section className="relative overflow-hidden bg-foreground px-6 pb-0 pt-10 text-background">
+    <section className="relative overflow-hidden bg-foreground px-6 pb-0 pt-28 text-background sm:pt-32">
       <h1 className={`mx-auto text-center font-display leading-[0.82] ${headlineSize}`}>
         {lines.map((line) => (
           <span key={line} className="block">
