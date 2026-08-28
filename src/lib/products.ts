@@ -5,6 +5,20 @@ import imgGulaab from "@/assets/sku-oud-gulaab.jpg";
 import imgFitoor from "@/assets/sku-fitoor.jpg";
 import imgDariya from "@/assets/sku-dariya.jpg";
 import imgUlfat from "@/assets/sku-ulfat.jpg";
+import sceneZafar from "@/assets/scene-oud-zafar.jpg";
+import sceneGulaab from "@/assets/scene-oud-gulaab.jpg";
+import sceneFitoor from "@/assets/scene-fitoor.jpg";
+import sceneDariya from "@/assets/scene-dariya.jpg";
+import sceneUlfat from "@/assets/scene-ulfat.jpg";
+
+/** Cinematic poster per scent, keyed by product id. */
+export const SCENE_IMAGES: Record<string, string> = {
+  "oud-zafar": sceneZafar,
+  "oud-gulaab": sceneGulaab,
+  fitoor: sceneFitoor,
+  dariya: sceneDariya,
+  ulfat: sceneUlfat,
+};
 
 export const BOTTLE_IMAGE = bottle.url;
 export const HERO_VIDEO = heroVideo.url;
