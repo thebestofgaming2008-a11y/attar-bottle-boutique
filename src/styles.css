@@ -207,6 +207,38 @@
   animation: marquee 22s linear infinite;
 }
 
+@keyframes bottle-spin {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@utility bottle-spin-stage {
+  perspective: 1400px;
+}
+
+@utility bottle-spin {
+  position: relative;
+  transform-style: preserve-3d;
+  animation: bottle-spin 3.2s linear infinite;
+}
+
+@utility bottle-spin-face {
+  display: block;
+  width: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+@utility bottle-spin-back {
+  position: absolute;
+  inset: 0;
+  transform: rotateY(180deg);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal {
     opacity: 1;
@@ -216,4 +248,8 @@
   .marquee-track {
     animation: none;
   }
+  .bottle-spin {
+    animation: none;
+  }
 }
+
