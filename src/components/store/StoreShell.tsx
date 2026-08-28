@@ -8,18 +8,9 @@ import { CartDrawer } from "./CartDrawer";
 export function StoreShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <AnnouncementBar />
       <SiteHeader />
       {children}
       <CartDrawer />
-    </div>
-  );
-}
-
-function AnnouncementBar() {
-  return (
-    <div className="bg-foreground py-2.5 text-center text-[11px] font-medium uppercase tracking-[0.2em] text-background">
-      Free shipping over ₹999
     </div>
   );
 }
@@ -46,13 +37,6 @@ function SiteHeader() {
       </Link>
 
       <div className="flex items-center gap-3">
-        <a
-          href="/#shop"
-          className="border border-background/60 px-4 py-1.5 text-[10px] font-semibold uppercase tracking-[0.2em] transition-colors hover:bg-background hover:text-foreground"
-        >
-          Buy now
-        </a>
-
         <button
           onClick={() => cart.setOpen(true)}
           aria-label="Open cart"
@@ -68,7 +52,6 @@ function SiteHeader() {
       </div>
     </header>
   );
-
 }
 
 export function SiteFooter() {

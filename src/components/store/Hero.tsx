@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import bottleCut from "@/assets/badr-bottle-cut.png.asset.json";
 import logo from "@/assets/badr-logo.png.asset.json";
-import { Wordmark } from "./Wordmark";
 import { BottleSpin } from "./BottleSpin";
 
 export const HERO_BOTTLE = bottleCut.url;
@@ -23,12 +22,11 @@ export function Hero({
   ctaTo?: string;
 }) {
   const lines = headline ? headline.split(" ") : ["Rare", "Air"];
+  const headlineSize = headline ? "text-[18vw] sm:text-[7rem]" : "text-[22vw] sm:text-[9rem]";
 
   return (
     <section className="relative overflow-hidden bg-foreground px-6 pb-0 pt-10 text-background">
-      <Wordmark size="lg" estd className="mx-auto block" />
-
-      <h1 className="mx-auto mt-10 text-center font-display text-[22vw] leading-[0.82] sm:text-[9rem]">
+      <h1 className={`mx-auto text-center font-display leading-[0.82] ${headlineSize}`}>
         {lines.map((line) => (
           <span key={line} className="block">
             {line}
@@ -59,4 +57,3 @@ export function Hero({
     </section>
   );
 }
-
