@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from "react";
 import zafar from "@/assets/spin-oud-zafar.png";
 import gulaab from "@/assets/spin-oud-gulaab.png";
 import fitoor from "@/assets/spin-fitoor.png";
@@ -13,47 +12,32 @@ export const SPIN_BOTTLES = [
   { src: ulfat, name: "Ulfat" },
 ];
 
-/** Half a rotation, in ms — the bottle swaps face while it is edge-on. */
-const HALF_TURN = 1600;
-
 /**
- * The signature bottle, spinning forever. Two faces of a 3D card carry
- * different labelled bottles; each face is swapped while it faces away,
- * so the bottle appears to keep turning and keeps revealing new designs.
+ * All five signature bottles gliding sideways forever — a duplicated track
+ * loops seamlessly; hidden scrollbars keep the strip clean.
  */
 export function BottleSpin({ className = "" }: { className?: string }) {
-  const [faces, setFaces] = useState<[number, number]>([0, 1]);
-  const step = useRef(0);
-
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const id = setInterval(() => {
-      step.current += 1;
-      const n = step.current;
-      setFaces(([a, b]): [number, number] => {
-        const next = (Math.max(a, b) + 1) % SPIN_BOTTLES.length;
-        // n even -> face A is visible, refresh the hidden face B, and vice versa.
-        return n % 2 === 0 ? [a, next] : [next, b];
-      });
-    }, HALF_TURN);
-
-    return () => clearInterval(id);
-  }, []);
-
-  const front = SPIN_BOTTLES[faces[0]] ?? SPIN_BOTTLES[0]!;
-  const back = SPIN_BOTTLES[faces[1]] ?? SPIN_BOTTLES[1]!;
+  const row = [...SPIN_BOTTLES, ...SPIN_BOTTLES];
 
   return (
-    <div className={`bottle-spin-stage ${className}`}>
-      <div className="bottle-spin">
-        <img
-          src={front.src}
-          alt={`BADR ${front.name} 6 ml roll-on attar bottle`}
-          className="bottle-spin-face"
-        />
-        <img src={back.src} alt="" aria-hidden className="bottle-spin-face bottle-spin-back" />
+    <div className={`overflow-hidden ${className}`}>
+      <div className="marquee-track items-end gap-14" style={{ animationDuration: "26s" }}>
+        {row.map((b, i) => (
+          <figure key={`${b.name}-${i}`} className="flex w-36 shrink-0 flex-col items-center gap-3">
+            <img
+              src={b.src}
+              alt={i < SPIN_BOTTLES.length ? `BADR ${b.name} 6 ml roll-on attar bottle` : ""}
+              aria-hidden={i >= SPIN_BOTTLES.length}
+              className="w-full"
+              loading={i >= SPIN_BOTTLES.length ? "lazy" : "eager"}
+              draggable={false}
+            />
+            <figcaption className="text-[9px] uppercase tracking-[0.3em] text-background/50">
+              {b.name}
+            </figcaption>
+          </figure>
+        ))}
       </div>
     </div>
   );
-
 }

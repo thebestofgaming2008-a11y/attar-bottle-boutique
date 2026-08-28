@@ -54,7 +54,7 @@ export function Hero({
         )}
       </div>
 
-      <BottleSpin className="mx-auto mt-12 w-full max-w-[240px]" />
+      <BottleSpin className="-mx-6 mt-14 w-screen" />
       <div className="h-4" />
     </section>
   );
