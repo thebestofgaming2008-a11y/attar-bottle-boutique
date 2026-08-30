@@ -10,6 +10,15 @@ import sceneGulaab from "@/assets/scene-oud-gulaab.jpg";
 import sceneFitoor from "@/assets/scene-fitoor.jpg";
 import sceneDariya from "@/assets/scene-dariya.jpg";
 import sceneUlfat from "@/assets/scene-ulfat.jpg";
+import notesZafar from "@/assets/notes-zafar.png";
+import notesGulaab from "@/assets/notes-gulaab.png";
+import notesFitoor from "@/assets/notes-fitoor.png";
+import notesDariya from "@/assets/notes-dariya.png";
+import notesUlfat from "@/assets/notes-ulfat.png";
+import baseSandalwood from "@/assets/note-base-sandalwood.png";
+import baseVanilla from "@/assets/note-base-vanilla.png";
+import baseVetiver from "@/assets/note-base-vetiver.png";
+import baseAmber from "@/assets/note-base-amber.png";
 
 /** Cinematic poster per scent, keyed by product id. */
 export const SCENE_IMAGES: Record<string, string> = {
@@ -24,6 +33,20 @@ export const BOTTLE_IMAGE = bottle.url;
 export const HERO_VIDEO = heroVideo.url;
 
 export type Occasion = "evening" | "everyday" | "morning" | "close";
+
+export type AnatomyCallout = {
+  note: string;
+  impression: string;
+};
+
+export type FragranceAnatomy = {
+  theme: "ember" | "crimson" | "gold" | "marine" | "amber";
+  top: AnatomyCallout;
+  heart: AnatomyCallout;
+  base: AnatomyCallout;
+  noteImage: string;
+  baseImage: string;
+};
 
 export type Product = {
   id: string;
@@ -42,6 +65,7 @@ export type Product = {
   mrp: number;
   occasion: Occasion;
   intensity: "bold" | "soft";
+  anatomy: FragranceAnatomy;
   faqs: { q: string; a: string }[];
 };
 
@@ -59,6 +83,14 @@ export const PRODUCTS: Product[] = [
     story:
       "Bold oud and saffron sit at the centre, rose keeps it warm, sandalwood stays on the skin long after you've left the room.",
     notes: ["Oud", "Saffron", "Rose", "Amber", "Sandalwood"],
+    anatomy: {
+      theme: "ember",
+      top: { note: "Saffron", impression: "A hot, leathery spark" },
+      heart: { note: "Rose & oud", impression: "Dark warmth with authority" },
+      base: { note: "Sandalwood", impression: "Creamy, lasting depth" },
+      noteImage: notesZafar,
+      baseImage: baseSandalwood,
+    },
     price: 599,
     mrp: 899,
     faqs: [
@@ -80,6 +112,14 @@ export const PRODUCTS: Product[] = [
     story:
       "Turkish rose with a soft resinous oud, backed by sandalwood and musk that hang around till the night's over.",
     notes: ["Rose", "Oud", "Sandalwood", "Musk"],
+    anatomy: {
+      theme: "crimson",
+      top: { note: "Turkish rose", impression: "Velvety, never delicate" },
+      heart: { note: "Resinous oud", impression: "Calm, smoky confidence" },
+      base: { note: "Sandalwood", impression: "Soft warmth after dark" },
+      noteImage: notesGulaab,
+      baseImage: baseSandalwood,
+    },
     price: 599,
     mrp: 899,
     faqs: [
@@ -102,6 +142,14 @@ export const PRODUCTS: Product[] = [
     story:
       "Juicy pineapple and apple lead, soft woods sit underneath, and a warm vanilla-musk trail closes it out.",
     notes: ["Pineapple", "Apple", "Vanilla", "Musk"],
+    anatomy: {
+      theme: "gold",
+      top: { note: "Pineapple", impression: "Bright, juicy impact" },
+      heart: { note: "Crisp apple", impression: "Fresh addictive energy" },
+      base: { note: "Vanilla & musk", impression: "A smooth skin-warm trail" },
+      noteImage: notesFitoor,
+      baseImage: baseVanilla,
+    },
     price: 499,
     mrp: 749,
     faqs: [
@@ -124,6 +172,14 @@ export const PRODUCTS: Product[] = [
     story:
       "Bergamot and mandarin open it up clean, vetiver carries it home — for the days you want to feel like you just stepped outside.",
     notes: ["Bergamot", "Mandarin", "Vetiver"],
+    anatomy: {
+      theme: "marine",
+      top: { note: "Bergamot", impression: "Clean citrus lift" },
+      heart: { note: "Mandarin", impression: "Sunlit, fluid freshness" },
+      base: { note: "Vetiver", impression: "Cool earth after rain" },
+      noteImage: notesDariya,
+      baseImage: baseVetiver,
+    },
     price: 499,
     mrp: 749,
     faqs: [
@@ -146,6 +202,14 @@ export const PRODUCTS: Product[] = [
     story:
       "Lavender opens it, vanilla carries the heart, amber wraps it up warm — sweet without asking for permission.",
     notes: ["Lavender", "Vanilla", "Amber"],
+    anatomy: {
+      theme: "amber",
+      top: { note: "Lavender", impression: "Aromatic, quiet clarity" },
+      heart: { note: "Vanilla", impression: "Warm without being sweet" },
+      base: { note: "Amber", impression: "Golden, close and lingering" },
+      noteImage: notesUlfat,
+      baseImage: baseAmber,
+    },
     price: 499,
     mrp: 749,
     faqs: [
