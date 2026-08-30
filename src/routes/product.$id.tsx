@@ -4,12 +4,13 @@ import { Minus, Plus } from "lucide-react";
 import { PRODUCTS, inr } from "@/lib/products";
 import { useCart } from "@/components/store/CartContext";
 import { StoreShell, SiteFooter } from "@/components/store/StoreShell";
-import { Hero } from "@/components/store/Hero";
-import { VideoBand } from "@/components/store/VideoBand";
 import { Section, SectionHead } from "@/components/store/Section";
 import { Reveal } from "@/components/store/Reveal";
 import { ProductCard } from "@/components/store/ProductCard";
 import { TrustStrip } from "@/components/store/TrustStrip";
+import { ProductGallery } from "@/components/store/ProductGallery";
+import { NoteAnatomy } from "@/components/store/NoteAnatomy";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/product/$id")({
   loader: ({ params }) => {
@@ -50,35 +51,21 @@ function ProductPage() {
 
   return (
     <StoreShell>
-      <Hero headline={product.name} ctaLabel="Add to bag" onCta={() => cart.add(product.id, qty)} />
+      <ProductGallery product={product} />
 
-      <VideoBand />
-
-      <Section bordered={false}>
-        <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
+      <Section bordered={false} className="py-16 sm:py-24">
+        <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(360px,0.72fr)] lg:gap-20">
           <Reveal>
-            <div className="bg-secondary px-8 py-16">
-              <img
-                src={product.image}
-                alt={`${product.name} attar, 6 ml roll-on`}
-                className="mx-auto w-full max-w-[280px]"
-              />
-            </div>
-          </Reveal>
-
-          <Reveal delay={100}>
             <p className="eyebrow">{product.category}</p>
-            <h1 className="mt-4 font-display text-4xl leading-[0.95] sm:text-5xl">{product.name}</h1>
+            <h1 className="mt-4 max-w-3xl font-display text-5xl leading-[0.9] sm:text-7xl">{product.name}</h1>
             <p className="mt-4 text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               {product.mood}
             </p>
-            <p className="mt-6 font-display text-lg leading-snug">{product.hook}</p>
-
-            <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
+            <p className="mt-8 max-w-xl font-display text-xl leading-snug sm:text-2xl">{product.hook}</p>
+            <p className="mt-5 max-w-xl text-sm leading-relaxed text-muted-foreground">
               {product.meaning ? `${product.meaning} ` : ""}
               {product.story}
             </p>
-
             <ul className="mt-7 flex flex-wrap gap-2">
               {product.notes.map((n) => (
                 <li
@@ -89,7 +76,11 @@ function ProductPage() {
                 </li>
               ))}
             </ul>
+          </Reveal>
 
+          <Reveal delay={100}>
+            <div className="border-y border-border py-8 lg:sticky lg:top-24">
+              <p className="eyebrow">6 ml concentrated attar</p>
             <div className="mt-8 flex items-baseline gap-3">
               <span className="font-display text-2xl">{inr(product.price)}</span>
               <span className="text-sm text-muted-foreground line-through">{inr(product.mrp)}</span>
@@ -103,42 +94,47 @@ function ProductPage() {
                   className="px-3.5 py-3"
                 >
                   <Minus className="h-3.5 w-3.5" />
-                </button>
+                </Button>
                 <span className="min-w-8 text-center text-sm">{qty}</span>
-                <button
+                <Button
+                  variant="ghost"
                   aria-label="Increase quantity"
                   onClick={() => setQty((q) => q + 1)}
-                  className="px-3.5 py-3"
+                  className="h-auto rounded-none px-3.5 py-3"
                 >
                   <Plus className="h-3.5 w-3.5" />
-                </button>
+                </Button>
               </div>
-              <button
+              <Button
                 onClick={() => cart.add(product.id, qty)}
-                className="flex-1 bg-foreground px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-background transition-opacity hover:opacity-85"
+                className="h-auto flex-1 rounded-none px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em]"
               >
                 Add to bag
-              </button>
+              </Button>
             </div>
 
             <p className="mt-4 text-xs text-muted-foreground">
               Free shipping over ₹999 · COD available · 7-day returns
             </p>
+            </div>
           </Reveal>
         </div>
       </Section>
 
       <TrustStrip />
 
+      <NoteAnatomy product={product} />
+
       <Section>
         <SectionHead eyebrow="Good to know" title="Questions" />
         <div className="mx-auto mt-12 max-w-2xl border-t border-border">
           {product.faqs.map((f, i) => (
             <div key={f.q} className="border-b border-border">
-              <button
+              <Button
+                variant="ghost"
                 onClick={() => setOpenFaq(openFaq === i ? null : i)}
                 aria-expanded={openFaq === i}
-                className="flex w-full items-center justify-between gap-4 py-5 text-left"
+                className="h-auto w-full justify-between rounded-none px-0 py-5 text-left hover:bg-transparent"
               >
                 <span className="text-sm font-semibold">{f.q}</span>
                 <Plus
@@ -146,7 +142,7 @@ function ProductPage() {
                     openFaq === i ? "rotate-45" : ""
                   }`}
                 />
-              </button>
+              </Button>
               <div
                 className={`grid transition-all duration-300 ease-out ${
                   openFaq === i ? "grid-rows-[1fr] pb-5 opacity-100" : "grid-rows-[0fr] opacity-0"
@@ -188,12 +184,12 @@ function ProductPage() {
           <p className="truncate font-display text-sm leading-none">{product.name}</p>
           <p className="mt-1 text-xs text-muted-foreground">{inr(product.price)} · 6 ml</p>
         </div>
-        <button
+        <Button
           onClick={() => cart.add(product.id, qty)}
-          className="shrink-0 bg-foreground px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em] text-background"
+          className="h-auto shrink-0 rounded-none px-6 py-3 text-[11px] font-semibold uppercase tracking-[0.2em]"
         >
           Add to bag
-        </button>
+        </Button>
       </div>
     </StoreShell>
   );
