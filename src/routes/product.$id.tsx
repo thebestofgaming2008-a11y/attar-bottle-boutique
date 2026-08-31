@@ -88,10 +88,11 @@ function ProductPage() {
 
             <div className="mt-6 flex items-stretch gap-3">
               <div className="inline-flex items-center border border-border">
-                <button
+                <Button
+                  variant="ghost"
                   aria-label="Decrease quantity"
                   onClick={() => setQty((q) => Math.max(1, q - 1))}
-                  className="px-3.5 py-3"
+                  className="h-auto rounded-none px-3.5 py-3"
                 >
                   <Minus className="h-3.5 w-3.5" />
                 </Button>
