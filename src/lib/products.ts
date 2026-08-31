@@ -19,6 +19,11 @@ import baseSandalwood from "@/assets/note-base-sandalwood.png";
 import baseVanilla from "@/assets/note-base-vanilla.png";
 import baseVetiver from "@/assets/note-base-vetiver.png";
 import baseAmber from "@/assets/note-base-amber.png";
+import anatomyZafar from "@/assets/anatomy-oud-zafar.jpg";
+import anatomyGulaab from "@/assets/anatomy-oud-gulaab.jpg";
+import anatomyFitoor from "@/assets/anatomy-fitoor.jpg";
+import anatomyDariya from "@/assets/anatomy-dariya.jpg";
+import anatomyUlfat from "@/assets/anatomy-ulfat.jpg";
 
 /** Cinematic poster per scent, keyed by product id. */
 export const SCENE_IMAGES: Record<string, string> = {
@@ -46,6 +51,7 @@ export type FragranceAnatomy = {
   base: AnatomyCallout;
   noteImage: string;
   baseImage: string;
+  posterImage: string;
 };
 
 export type Product = {
@@ -89,6 +95,7 @@ export const PRODUCTS: Product[] = [
       heart: { note: "Rose & oud", impression: "Dark warmth with authority" },
       base: { note: "Sandalwood", impression: "Creamy, lasting depth" },
       noteImage: notesZafar,
+      posterImage: anatomyZafar,
       baseImage: baseSandalwood,
     },
     price: 599,
@@ -118,6 +125,7 @@ export const PRODUCTS: Product[] = [
       heart: { note: "Resinous oud", impression: "Calm, smoky confidence" },
       base: { note: "Sandalwood", impression: "Soft warmth after dark" },
       noteImage: notesGulaab,
+      posterImage: anatomyGulaab,
       baseImage: baseSandalwood,
     },
     price: 599,
@@ -148,6 +156,7 @@ export const PRODUCTS: Product[] = [
       heart: { note: "Crisp apple", impression: "Fresh addictive energy" },
       base: { note: "Vanilla & musk", impression: "A smooth skin-warm trail" },
       noteImage: notesFitoor,
+      posterImage: anatomyFitoor,
       baseImage: baseVanilla,
     },
     price: 499,
@@ -178,6 +187,7 @@ export const PRODUCTS: Product[] = [
       heart: { note: "Mandarin", impression: "Sunlit, fluid freshness" },
       base: { note: "Vetiver", impression: "Cool earth after rain" },
       noteImage: notesDariya,
+      posterImage: anatomyDariya,
       baseImage: baseVetiver,
     },
     price: 499,
@@ -208,6 +218,7 @@ export const PRODUCTS: Product[] = [
       heart: { note: "Vanilla", impression: "Warm without being sweet" },
       base: { note: "Amber", impression: "Golden, close and lingering" },
       noteImage: notesUlfat,
+      posterImage: anatomyUlfat,
       baseImage: baseAmber,
     },
     price: 499,
